@@ -1,11 +1,10 @@
-# Show Current User
+# 모든 센터 정보 가져오기
 
-Get the details of the currently Authenticated User along with basic
-subscription information.
-
-**URL** : `/api/user/`
+센터의 모든 정보를 가져옴
 
 **Method** : `GET`
+
+**URL** : `/api/gym/all`
 
 **Auth required** : YES
 
@@ -17,30 +16,32 @@ subscription information.
 
 **Content examples**
 
-For a User with ID 1234 on the local database where that User has saved an
-email address and name information.
-
 ```json
 {
-    "id": 1234,
-    "first_name": "Joe",
-    "last_name": "Bloggs",
-    "email": "joe25@example.com"
-}
-```
-
-For a user with ID 4321 on the local database but no details have been set yet.
-
-```json
-{
-    "id": 4321,
-    "first_name": "",
-    "last_name": "",
-    "email": ""
+    "code": "ok",
+    "result": [
+        {
+            "_id": "5d8f7c3eb9722f2d569dba61",
+            "create_t": "2019-09-28T15:23:56.475Z",
+            "id": "testCenter1",
+            "name": "웰페리온1",
+            "__v": 0
+        },
+        {
+            "_id": "5d8f7bedb9722f2d569dba60",
+            "create_t": "2019-09-28T15:23:56.475Z",
+            "id": "testCenter",
+            "name": "웰페리온",
+            "__v": 0
+        }
+    ]
 }
 ```
 
 ## Notes
 
-* If the User does not have a `UserInfo` instance when requested then one will
-  be created for them.
+* 속성값 중의 원하는 값으로 쿼리를 통해서 원하는 정보를 가지고 올 수 있다.
+
+`/api/gym/all?_id=5d8f736195a8bd2bcc661cae`
+
+_id의 5d8f736195a8bd2bcc661cae값을 검색하여 모든 데이터를 가져올 수 있다.
